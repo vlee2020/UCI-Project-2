@@ -51,6 +51,47 @@ engine = create_engine(f"postgresql://{rds_connection_string}")
 def homepage():
     return render_template('index.html')
 
+@app.route("/aboutus")
+def aboutus():
+    return render_template('aboutus.html')
+
+@app.route("/bulbasaur")
+def bulbasaur():
+    return render_template('bulbasaur.html')
+
+@app.route("/chart1")
+def chart1():
+    return render_template('chart1.html')
+
+@app.route("/chart2")
+def chart2():
+    return render_template('chart2.html')
+
+@app.route("/chart3")
+def chart3():
+    return render_template('chart3.html')
+
+@app.route("/getstarted")
+def getstarted():
+    return render_template('getstarted.html')
+
+@app.route("/pokemongo")
+def pokemongo():
+    return render_template('pokemongo.html')
+
+@app.route("/privacy")
+def privacy():
+    return render_template('privacy.html')
+
+@app.route("/team")
+def team():
+    return render_template('team.html')
+
+@app.route("/terms")
+def terms():
+    return render_template('terms.html')
+
+
 # Data for Daniel's Scatter Chart
 @app.route("/data/pokemon_data")
 def pokemon_data():
