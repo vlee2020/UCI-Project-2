@@ -38,3 +38,5 @@ def legendaries():
     print("")
     return ""
 app.run(debug=True)
+
+#testing again
