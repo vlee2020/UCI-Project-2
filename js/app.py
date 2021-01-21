@@ -40,4 +40,3 @@ def legendaries():
 app.run(debug=True)
 
 #testing again
-
