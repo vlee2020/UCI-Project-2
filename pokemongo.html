@@ -6,8 +6,10 @@
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <link rel="stylesheet" type="text/css" href="css/reset.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/reset.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- <link rel="stylesheet" type="text/css" href="css/reset.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
     <link href='http://fonts.googleapis.com/css?family=Crete+Round' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
@@ -55,7 +57,7 @@
     <div id="hero-image">
         <div class="wrapper">
             <h3><strong>Katy Perry Helps Celebrate the 25th Anniversary of Pokémon</h3>
-                <img width="400" height="226"src="images/25th.jpg" ALIGN="right" alt="Katy Perry image"/>
+                <img width="400" height="226"src="static/images/25th.jpg" ALIGN="right" alt="Katy Perry image"/>
             <!-- <a href="getstarted.html" class="button-1">Get Started</a> -->
                 <p>Get ready to party, Trainers! It's 2021, which marks 25 years of Pokémon. That's a quarter-century of awesome video games, exciting animation, cool cards, and so much more. To mark this auspicious occasion, a yearlong celebration including music collaborations, remembrances of previous travels through the world of Pokémon, special Pokémon Trading Card Game collections, and plenty more excitement is about to kick off.</p>
         </div>
@@ -93,14 +95,14 @@
 
     <div id="secondary-content">
         <div class="wrapper"></div>
-            <article style="background-image: url('images/001_460x270_v3.png');">
+            <article style="background-image: url('static/images/001_460x270_v3.png');">
                 <div class="overlay">
                     <h4>Meet Bulbasaur</h4>
                     <p>There is a plant seed on its back right from the day this Pokémon is born. The seed slowly grows.</p>
                     <a href="bulbasaur.html" class="more-link">View more</a>
                 </div>
             </article>
-            <article style="background-image: url('images/25th-anniversary-main-169_460x270_v2.jpg');">
+            <article style="background-image: url('static/images/25th-anniversary-main-169_460x270_v2.jpg');">
                 <div class="overlay">
                     <h4>Pokémon GO!</h4>
                     <p>Katy Perry Helps Celebrate the 25th Anniversary of Pokémon. A yearlong celebration begins.</p>
