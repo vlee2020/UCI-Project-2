@@ -103,10 +103,10 @@ def pokemon_data():
 # Data for Vanessa's Heatmap
 @app.route("/data/type_data")
 def type_data():
-    data = pd.read_sql("select * from type_data;", con=engine).to_json(index=False,orient="table")
-    type_data = json.loads(data)
+    data = pd.read_sql("select * from effectiveness_by_type_data;", con=engine).to_json(index=False,orient="table")
+    effectiveness_by_type_data = json.loads(data)
 
-    return jsonify(type_data['data'])
+    return jsonify(effectiveness_by_type_data['data'])
 
 # Data for Seraphin's bar chart  (Seraphin to update as needed)
 @app.route("/data/starter_data")
