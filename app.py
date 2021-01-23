@@ -19,7 +19,6 @@ import psycopg2
 app = Flask(__name__)
 CORS(app)
 
-
 #################################################
 # Flask Routes
 
