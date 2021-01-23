@@ -6,8 +6,10 @@
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <link rel="stylesheet" type="text/css" href="css/reset.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/reset.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- <link rel="stylesheet" type="text/css" href="css/reset.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
     <link href='http://fonts.googleapis.com/css?family=Crete+Round' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -61,7 +63,7 @@
             <h3><strong>The World of Pokémon!</h3>
                 <!-- <div class="Fighting-Pokemon-1.jpg"></div> -->
             
-            <img width="290" height="410"src="images/PSMD_poster.png" ALIGN="right" alt="Pokemon image"/>
+            <img width="290" height="410"src="static/images/PSMD_poster.png" ALIGN="right" alt="Pokemon image"/>
                 <p>Join us in exploring the world of Pokémon! This internationally beloved game is a staple of gamers everywhere and our project explores the game,
                 highlighting the history,characters and territories of this complex game using our website.</p><p>Check out the drop-down menu for our specialized charts highlighting information such as character background,
                 types and special powers, as well as territories. And check our chart of the day highlighted below.<p>Curious to learn more about each character? Each month we highlight a fan-favorite character to help you play the game with more knowledge. And if you're in need of regular updates, we feature the latest news and happenings.</p>A great tool for beginners and advanced users of Pokémon!</p>
@@ -94,21 +96,21 @@
             <article>
                 <h3>Chart of the Day</h3>
                 <p></p>
-                <a href="chart1.html"><img src="images/fightingsmog.jpg" alt="image-placeholder" /></a>
+                <a href="chart1.html"><img src="static/images/fightingsmog.jpg" alt="image-placeholder" /></a>
             </article>
         </div>
     </div>
 
     <div id="secondary-content">
         <div class="wrapper"></div>
-            <article style="background-image:url('images/001_460x270_v3.png');">
+            <article style="background-image:url('static/images/001_460x270_v3.png');">
                 <div class="overlay">
                     <h4>Meet Bulbasaur</h4>
                     <p>There is a plant seed on its back right from the day this Pokémon is born. The seed slowly grows.</p>
                     <a href="bulbasaur.html" class="more-link">View more</a>
                 </div>
             </article>
-            <article style="background-image: url('images/25th-anniversary-main-169_460x270_v2.jpg');">
+            <article style="background-image: url('static/images/25th-anniversary-main-169_460x270_v2.jpg');">
                 <div class="overlay">
                     <h4>Pokémon GO!</h4>
                     <p>Katy Perry helps celebrate the 25th anniversary of Pokémon. A yearlong celebration begins.</p>
