@@ -1,5 +1,6 @@
 #flask file
 from flask import Flask, render_template, redirect, jsonify
+from flask_cors import CORS
 import json
 import numpy as np
 import sqlalchemy
@@ -16,6 +17,8 @@ import psycopg2
 #################################################
 
 app = Flask(__name__)
+CORS(app)
+
 
 #################################################
 # Flask Routes
@@ -24,28 +27,6 @@ app = Flask(__name__)
 # Connection to PostgreSQL server
 rds_connection_string = "postgres:postgres@localhost:5432/pokemon.db"
 engine = create_engine(f"postgresql://{rds_connection_string}")
-# @app.route("/")
-# def home():
-#     print("Server received request for 'Home' page...")
-#     return ("Welcome to our Pokemon API<br/>"
-#     f"/type<br/>"
-#     f"/starters<br/>"
-#     f"/legendaries<br/>")
-
-# @app.route("/type")
-# def types():
-#     print("")
-#     return ""
-
-# @app.route("/starters")
-# def starters():
-#     print("")
-#     return ""
-
-# @app.route("/legendaries")
-# def legendaries():
-#     print("")
-#     return ""
 
 @app.route("/")
 def homepage():
@@ -100,7 +81,7 @@ def pokemon_data():
 
     return jsonify(pokemon_data['data'])
 
-# Data for Vanessa's Heatmap
+# # Data for Vanessa's Heatmap
 @app.route("/data/type_data")
 def type_data():
     data = pd.read_sql("select * from effectiveness_by_type_data;", con=engine).to_json(index=False,orient="table")
@@ -108,7 +89,7 @@ def type_data():
 
     return jsonify(effectiveness_by_type_data['data'])
 
-# Data for Seraphin's bar chart  (Seraphin to update as needed)
+# Data for Serafin's bar chart  (Seraphin to update as needed)
 @app.route("/data/starter_data")
 def starter_data():
     data = pd.read_sql("select * from starter_data;", con=engine).to_json(index=False,orient="table")
