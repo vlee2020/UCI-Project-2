@@ -107,7 +107,7 @@
 
 // set the dimensions of the canvas
 var margin = {top: 20, right: 20, bottom: 70, left: 40},
-    width = 600 - margin.left - margin.right,
+    width = 1200 - margin.left - margin.right,
     height = 300 - margin.top - margin.bottom;
 
 
@@ -142,7 +142,8 @@ var svg = d3.select("body").append("svg")
 // URL = "http://127.0.0.1:5000/data/starter_data";
 // d3.json(URL).then(function(data) {
   URL = "http://127.0.0.1:5000/data/starter_data";
-  d3.json(URL).then(function(data) {
+  d3.json(URL,function(data) {
+    console.log(data);
 
     data.forEach(function(d) {
         d.name = d.name;
