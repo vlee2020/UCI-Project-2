@@ -24,11 +24,15 @@ CORS(app)
 
 #################################################
 # Connection to PostgreSQL server
-rds_connection_string = "postgres:postgres@localhost:5432/pokemon.db"
+rds_connection_string = "postgres:1234@localhost:5432/pokemon.db"
 engine = create_engine(f"postgresql://{rds_connection_string}")
 
 @app.route("/")
 def homepage():
+    return render_template('home.html')
+
+@app.route("/index.html")
+def homepage2():
     return render_template('index.html')
 
 @app.route("/aboutus.html")
