@@ -86,7 +86,9 @@ var svg = d3.select("body").append("svg")
     .append("circle")
     .attr("cx", d => xLinearScale(d.name))
     .attr("cy", d => yLinearScale(d.total_points))
-    .attr("r", "20")
+
+    .attr("r", "15")
+
     .attr("fill", "pink")
     .attr("opacity", ".5");
 
