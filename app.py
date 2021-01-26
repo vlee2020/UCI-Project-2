@@ -19,36 +19,39 @@ import psycopg2
 app = Flask(__name__)
 CORS(app)
 
-
 #################################################
 # Flask Routes
 
 #################################################
 # Connection to PostgreSQL server
-rds_connection_string = "postgres:1234@localhost:5432/pokemon.db"
+rds_connection_string = "postgres:postgres@localhost:5432/pokemon.db"
 engine = create_engine(f"postgresql://{rds_connection_string}")
 
 @app.route("/")
 def homepage():
+    return render_template('home.html')
+
+@app.route("/index.html")
+def homepage2():
     return render_template('index.html')
 
-@app.route("/aboutus")
+@app.route("/aboutus.html")
 def aboutus():
     return render_template('aboutus.html')
 
-@app.route("/bulbasaur")
+@app.route("/bulbasaur.html")
 def bulbasaur():
     return render_template('bulbasaur.html')
 
-@app.route("/chart1")
+@app.route("/chart1.html")
 def chart1():
     return render_template('chart1.html')
 
-@app.route("/chart2")
+@app.route("/chart2.html")
 def chart2():
     return render_template('chart2.html')
 
-@app.route("/chart3")
+@app.route("/chart3.html")
 def chart3():
     return render_template('chart3.html')
 
@@ -56,19 +59,19 @@ def chart3():
 def getstarted():
     return render_template('getstarted.html')
 
-@app.route("/pokemongo")
+@app.route("/pokemongo.html")
 def pokemongo():
     return render_template('pokemongo.html')
 
-@app.route("/privacy")
+@app.route("/privacy.html")
 def privacy():
     return render_template('privacy.html')
 
-@app.route("/team")
+@app.route("/team.html")
 def team():
     return render_template('team.html')
 
-@app.route("/terms")
+@app.route("/terms.html")
 def terms():
     return render_template('terms.html')
 
