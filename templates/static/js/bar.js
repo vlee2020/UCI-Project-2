@@ -77,4 +77,40 @@ var svg = d3.select("body").append("svg")
       .attr("width", x.rangeBand())
       .attr("y", function(d) { return y(d.total_points); })
       .attr("height", function(d) { return height - y(d.total_points); });
+
+  
+  // ==============================
+  var circlesGroup = chartGroup.selectAll("circle")
+    .data(data)
+    .enter()
+    .append("circle")
+    .attr("cx", d => xLinearScale(d.name))
+    .attr("cy", d => yLinearScale(d.total_points))
+    .attr("r", "20")
+    .attr("fill", "pink")
+    .attr("opacity", ".5");
+
+    // Step 6: Initialize tool tip
+    // ==============================
+  var toolTip = d3.tip()
+    .attr("class", "tooltip")
+    .offset([80, -60])
+    .html(function(d) {
+      return (`${d.pokedex_number}<br>Pokemon: ${d.name}<br>Total Points: ${d.total_points}`);
+    });
+
+    // Step 7: Create tooltip in the chart
+    // ==============================
+  chartGroup.call(toolTip);
+
+    // Step 8: Create event listeners to display and hide the tooltip
+    // ==============================
+  circlesGroup.on("click", function(data) {
+    toolTip.show(data, this);
+  })
+  // onmouseout event
+  .on("mouseout", function(data, index) {
+    toolTip.hide(data);
+  });  
+
 });
