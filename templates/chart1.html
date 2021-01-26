@@ -6,17 +6,45 @@
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/reset.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" type="text/css" href="../static/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href='http://fonts.googleapis.com/css?family=Crete+Round' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Basic Charts</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+
+        .bar{
+          fill: rgb(8, 62, 241);
+        }
+      
+        .bar:hover{
+          fill: rgb(231, 121, 19);
+        }
+      
+          .axis {
+            font: 10px sans-serif;
+          }
+      
+          .axis path,
+          .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+          }
+      
+          </style>
+
+
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="https://www.pokemon.com/us">The World of Pokémon!</a>
+        <a class="navbar-brand" href="index.html">The World of Pokémon!</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -73,9 +101,13 @@
 
     <div id="hero-image">
         <div class="wrapper">
-            <h2><strong>Chart 1</h2>
+            <h2><strong>Pokemon Starter Total Power stats</h2>
             <!-- <a href="#" class="button-1">Get Started</a> -->
-                <p>Explaining Chart 1</p>
+                <p>This chart provides valuable information that can be used to complate starter pokemon and their evolutions.</br>
+                The total Points is calculating by adding the Pokemon's Attack points, Defense points, Hit points (hp), special attack points, special defense points and the speed.
+                </p>
+                <div id="plot"></div>
+                <script src="static/js/bar.js"></script>
         </div>
     </div>
 
@@ -111,14 +143,14 @@
 
     <div id="secondary-content">
         <div class="wrapper"></div>
-            <article style="background-image: url('../static/images/001_460x270_v3.png');">
+            <article style="background-image: url('images/001_460x270_v3.png');">
                 <div class="overlay">
                     <h4>Meet Bulbasaur</h4>
                     <p>There is a plant seed on its back right from the day this Pokémon is born. The seed slowly grows.</p>
                     <a href="bulbasaur.html" class="more-link">View more</a>
                 </div>
             </article>
-            <article style="background-image: url('../static/images/25th-anniversary-main-169_460x270_v2.jpg');">
+            <article style="background-image: url('images/25th-anniversary-main-169_460x270_v2.jpg');">
                 <div class="overlay">
                     <h4>Pokémon GO!</h4>
                     <p>Katy Perry Helps Celebrate the 25th Anniversary of Pokémon. A yearlong celebration begins.</p>
@@ -164,6 +196,10 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="d3.min.js"></script>
+
+
 </body>
 </html>
 
