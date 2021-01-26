@@ -39,15 +39,15 @@ def aboutus():
 def bulbasaur():
     return render_template('bulbasaur.html')
 
-@app.route("/chart1")
+@app.route("/chart1.html")
 def chart1():
     return render_template('chart1.html')
 
-@app.route("/chart2")
+@app.route("/chart2.html")
 def chart2():
     return render_template('chart2.html')
 
-@app.route("/chart3")
+@app.route("/chart3.html")
 def chart3():
     return render_template('chart3.html')
 
