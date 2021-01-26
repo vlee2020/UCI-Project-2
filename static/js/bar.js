@@ -82,40 +82,9 @@ var svg = d3.select("body").append("svg")
       .attr("x", function(d) { return x(d.name); })
       .attr("width", x.rangeBand())
       .attr("y", function(d) { return y(d.total_points); })
-<<<<<<< HEAD
       .attr("height", function(d) { return height - y(d.total_points); })
       .on('mouseover', tip.show)
       .on('mouseout', tip.hide)
-=======
-      .attr("height", function(d) { return height - y(d.total_points); });
-
-  
-  // ==============================
-  var circlesGroup = chartGroup.selectAll("circle")
-    .data(data)
-    .enter()
-    .append("circle")
-    .attr("cx", d => xLinearScale(d.name))
-    .attr("cy", d => yLinearScale(d.total_points))
-
-    .attr("r", "15")
-
-    .attr("fill", "pink")
-    .attr("opacity", ".5");
-
-    // Step 6: Initialize tool tip
-    // ==============================
-  var toolTip = d3.tip()
-    .attr("class", "tooltip")
-    .offset([80, -60])
-    .html(function(d) {
-      return (`${d.pokedex_number}<br>Pokemon: ${d.name}<br>Total Points: ${d.total_points}`);
-    });
-
-    // Step 7: Create tooltip in the chart
-    // ==============================
-  chartGroup.call(toolTip);
->>>>>>> ae8dd2870805c089d2a1789089c4011840497dc7
 
 });
 
