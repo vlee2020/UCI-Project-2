@@ -29,6 +29,10 @@ engine = create_engine(f"postgresql://{rds_connection_string}")
 
 @app.route("/")
 def homepage():
+    return render_template('home.html')
+
+@app.route("/index.html")
+def homepage2():
     return render_template('index.html')
 
 @app.route("/aboutus.html")
