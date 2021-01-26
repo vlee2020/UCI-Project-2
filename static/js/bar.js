@@ -1,4 +1,5 @@
 // set the dimensions of the canvas
+
 var margin = {top: 20, right: 20, bottom: 70, left: 40},
     width = 1500 - margin.left - margin.right,
     height = 750 - margin.top - margin.bottom;
@@ -28,8 +29,13 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", 
           "translate(" + margin.left + "," + margin.top + ")");
-
-
+// var tip = d3.tip()
+//   .attr('class', 'd3-tip')
+//   .offset([-10, 0])
+//   .html(function(d) {
+//     return "<strong>Total Points:</strong> <span style='color:red'>" + d.total_points + "</span>";
+//   })
+//   svg.call(tip);
 
 // Parse the Data
 // URL = "http://127.0.0.1:5000/data/starter_data";
@@ -76,41 +82,13 @@ var svg = d3.select("body").append("svg")
       .attr("x", function(d) { return x(d.name); })
       .attr("width", x.rangeBand())
       .attr("y", function(d) { return y(d.total_points); })
-      .attr("height", function(d) { return height - y(d.total_points); });
-
-  
-  // ==============================
-  var circlesGroup = chartGroup.selectAll("circle")
-    .data(data)
-    .enter()
-    .append("circle")
-    .attr("cx", d => xLinearScale(d.name))
-    .attr("cy", d => yLinearScale(d.total_points))
-    .attr("r", "15")
-    .attr("fill", "pink")
-    .attr("opacity", ".5");
-
-    // Step 6: Initialize tool tip
-    // ==============================
-  var toolTip = d3.tip()
-    .attr("class", "tooltip")
-    .offset([80, -60])
-    .html(function(d) {
-      return (`${d.pokedex_number}<br>Pokemon: ${d.name}<br>Total Points: ${d.total_points}`);
-    });
-
-    // Step 7: Create tooltip in the chart
-    // ==============================
-  chartGroup.call(toolTip);
-
-    // Step 8: Create event listeners to display and hide the tooltip
-    // ==============================
-  circlesGroup.on("click", function(data) {
-    toolTip.show(data, this);
-  })
-  // onmouseout event
-  .on("mouseout", function(data, index) {
-    toolTip.hide(data);
-  });  
+      .attr("height", function(d) { return height - y(d.total_points); })
+      .on('mouseover', tip.show)
+      .on('mouseout', tip.hide)
 
 });
+
+function type(d) {
+  d.total_points = +d.total_points;
+  return d;
+}
