@@ -31,11 +31,11 @@ engine = create_engine(f"postgresql://{rds_connection_string}")
 def homepage():
     return render_template('index.html')
 
-@app.route("/aboutus")
+@app.route("/aboutus.html")
 def aboutus():
     return render_template('aboutus.html')
 
-@app.route("/bulbasaur")
+@app.route("/bulbasaur.html")
 def bulbasaur():
     return render_template('bulbasaur.html')
 
@@ -55,19 +55,19 @@ def chart3():
 def getstarted():
     return render_template('getstarted.html')
 
-@app.route("/pokemongo")
+@app.route("/pokemongo.html")
 def pokemongo():
     return render_template('pokemongo.html')
 
-@app.route("/privacy")
+@app.route("/privacy.html")
 def privacy():
     return render_template('privacy.html')
 
-@app.route("/team")
+@app.route("/team.html")
 def team():
     return render_template('team.html')
 
-@app.route("/terms")
+@app.route("/terms.html")
 def terms():
     return render_template('terms.html')
 
