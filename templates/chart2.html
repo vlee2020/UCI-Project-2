@@ -12,21 +12,11 @@
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
     <link href='http://fonts.googleapis.com/css?family=Crete+Round' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-core.min.js"></script>
-    <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-radar.min.js"></script>
-    <style type="text/css">
-      html, body, #container {
-        width: 100%;
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="index.html">The World of Pokémon!</a>
+        <a class="navbar-brand" href="https://www.pokemon.com/us">The World of Pokémon!</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -80,43 +70,169 @@
             </nav>
         </div>
     </header> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://d3js.org/d3.v4.js"></script>
+    <script src="jquery-3.5.1.min.js"></script>
+    
+      <h4>Stats by Primary Pokemon Type</h4>
+            
+      <p>This chart takes the average stat values of primary Pokemon types and compares them against each other. Click the legend items to filter the data!
+      </p>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <!-- Code for radar chart -->
+      <!-- Defines canvas for radar chart -->
+    <div id="chart">
+    <canvas id="myChart" width="500" height="250"> </canvas>
+            <script type="text/javascript">
 
-    <div id="hero-image">
-        <div class="wrapper">
-            <h2><strong>Chart 2</h2>
-            <!-- <a href="#" class="button-1">Get Started</a> -->
-                <p>Explain Chart 2</p>
-        </div>
+            // loads pokemon data from our SQL server
+
+            var ourRequest = new XMLHttpRequest();
+            ourRequest.open('GET', 'http://127.0.0.1:5000/data/pokemon_data')
+            ourRequest.onload = function()  {
+            var PokeData = JSON.parse(ourRequest.responseText);
+                
+            // Defining datasets for display on radar plot
+
+               var Bug = [PokeData[0].hp, PokeData[0].attack, PokeData[0].defense, PokeData[0].sp_attack, PokeData[0].sp_defense, PokeData[0].speed]
+               var Dark = [PokeData[1].hp, PokeData[1].attack, PokeData[1].defense, PokeData[1].sp_attack, PokeData[1].sp_defense, PokeData[1].speed]
+               var Dragon = [PokeData[2].hp, PokeData[2].attack, PokeData[2].defense, PokeData[2].sp_attack, PokeData[2].sp_defense, PokeData[2].speed]
+               var Electric = [PokeData[3].hp, PokeData[3].attack, PokeData[3].defense, PokeData[3].sp_attack, PokeData[3].sp_defense, PokeData[3].speed]
+               var Fairy = [PokeData[4].hp, PokeData[4].attack, PokeData[4].defense, PokeData[4].sp_attack, PokeData[4].sp_defense, PokeData[4].speed]
+               var Fighting = [PokeData[5].hp, PokeData[5].attack, PokeData[5].defense, PokeData[5].sp_attack, PokeData[5].sp_defense, PokeData[5].speed]
+               var Fire = [PokeData[6].hp, PokeData[6].attack, PokeData[6].defense, PokeData[6].sp_attack, PokeData[6].sp_defense, PokeData[6].speed]
+               var Flying = [PokeData[7].hp, PokeData[7].attack, PokeData[7].defense, PokeData[7].sp_attack, PokeData[7].sp_defense, PokeData[7].speed]
+               var Ghost = [PokeData[8].hp, PokeData[8].attack, PokeData[8].defense, PokeData[8].sp_attack, PokeData[8].sp_defense, PokeData[8].speed]
+               var Grass = [PokeData[9].hp, PokeData[9].attack, PokeData[9].defense, PokeData[9].sp_attack, PokeData[9].sp_defense, PokeData[9].speed]
+               var Ground = [PokeData[10].hp, PokeData[10].attack, PokeData[10].defense, PokeData[10].sp_attack, PokeData[10].sp_defense, PokeData[10].speed]
+               var Ice = [PokeData[11].hp, PokeData[11].attack, PokeData[11].defense, PokeData[11].sp_attack, PokeData[11].sp_defense, PokeData[11].speed]
+               var Normal = [PokeData[12].hp, PokeData[12].attack, PokeData[12].defense, PokeData[12].sp_attack, PokeData[12].sp_defense, PokeData[12].speed]
+               var Poison = [PokeData[13].hp, PokeData[13].attack, PokeData[13].defense, PokeData[13].sp_attack, PokeData[13].sp_defense, PokeData[13].speed]
+               var Psychic = [PokeData[14].hp, PokeData[14].attack, PokeData[14].defense, PokeData[14].sp_attack, PokeData[14].sp_defense, PokeData[14].speed]
+               var Rock = [PokeData[15].hp, PokeData[15].attack, PokeData[15].defense, PokeData[15].sp_attack, PokeData[15].sp_defense, PokeData[15].speed]
+               var Steel = [PokeData[16].hp, PokeData[16].attack, PokeData[16].defense, PokeData[16].sp_attack, PokeData[16].sp_defense, PokeData[16].speed]
+               var Water = [PokeData[17].hp, PokeData[17].attack, PokeData[17].defense, PokeData[17].sp_attack, PokeData[17].sp_defense, PokeData[17].speed]
+
+        
+
+
+              //  Defining Colorsets for display on radar plot
+              var ctx = document.getElementById("myChart");
+              var data = {
+                        labels: ["HP","Attack","Defense","Sp.Attack","Sp.Defense","Speed"],
+                        datasets: [
+                           { label: 'Normal',
+                           data: Normal,
+                           borderColor :['rgba(210, 180, 140, 1)'],
+                           hidden: true
+                     },
+                           { label: 'Fire',
+                           data: Fire,
+                           borderColor :['rgba(255, 0, 0, 1)']
+                     },
+                           { label: 'Water',
+                           data: Water,
+                           borderColor :['rgba(0, 0, 255, 1)']
+                     },
+                           { label: 'Electric',
+                           data: Electric,
+                           borderColor :['rgba(255, 255, 0, 1)'],
+                           hidden: true
+                     },
+                           { label: 'Fighting',
+                           data: Fighting,
+                           borderColor :['rgba(128, 0, 0, 1)'],
+                           hidden: true
+                     },
+                           { label: 'Ground',
+                           data: Ground,
+                           borderColor :['rgba(205, 133, 63, 1)'],
+                           hidden: true
+                     },
+                           { label: 'Psychic',
+                           data: Psychic,
+                           borderColor :['rgba(255, 0, 255, 1)'],
+                           hidden: true
+                     },
+                           { label: 'Rock',
+                           data: Rock,
+                           borderColor :['rgba(139, 69, 19, 1)'],
+                           hidden: true
+                     },
+                           { label: 'Dark',
+                           data: Dark,
+                           borderColor :['rgba(0, 0, 0, 1)'],
+                           hidden: true
+                     },
+                           { label: 'Steel',
+                           data: Steel,
+                           borderColor :['rgba(192, 192, 192, 1)'],
+                           hidden: true
+                     },
+                           { label: 'Grass',
+                           data: Grass,
+                           borderColor :['rgba(0, 128, 0, 1)']
+                     },
+                           { label: 'Ice',
+                           data: Ice,
+                           borderColor :['rgba(70, 130, 180, 1)'],
+                           hidden: true
+                     },
+                           { label: 'Poison',
+                           data: Poison,
+                           borderColor :['rgba(148, 0, 211, 1)'],
+                           hidden: true
+                     },
+                           { label: 'Flying',
+                           data: Flying,
+                           borderColor :['rgba(135, 206, 250, 1)'],
+                           hidden: true
+                     },
+                           { label: 'Bug',
+                           data: Bug,
+                           borderColor :['rgba(127, ,255, 0 , 1)'],
+                           hidden: true
+                     },   
+                           { label: 'Ghost',
+                           data: Ghost,
+                           borderColor :['rgba(75, 0, 130, 1)'],
+                           hidden: true
+                     },
+                           { label: 'Dragon',
+                           data: Dragon,
+                           borderColor :['rgba(139, 0, 139, 1)'],
+                           hidden: true
+                     },
+                           { label: 'Fairy',
+                           data: Fairy,
+                           borderColor :['rgba(255, 192, 203, 1)'],
+                           hidden: true
+                     }
+                  ]
+               }
+            //    creates the radarplot using chart.js library 
+              var myChart = new Chart(ctx, {
+                type: 'radar',data,
+               options: {
+                   
+                  scales: {
+                     yAxes: [{
+                        ticks: {
+                           beginAtZero:true
+                        }
+                     }]
+                  }
+               }
+               
+            });
+          };
+            ourRequest.send();
+            </script>
+       
     </div>
+    
 
-    <!-- <div id="features">
-        <div class="wrapper">
-            <ul>
-                <li class="feature-1">
-                    <h4>Go Pokemon Go!</h4>
-                    <p>lorem ipsum</p>
-                </li>
-                <li class="feature-2">
-                    <h4>Characters</h4>
-                    <p>lorem ipsum</p>
-                </li> -->
-                <!-- <li class="feature-3">
-                    <h4>Territories</h4>
-                    <p>lorem ipsum</p>
-                </li>
-                <div class="clear"></div>
-            </ul>
-        </div>
-    </div> -->
-
-    <!-- <div id="primary-content">
-        <div class="wrapper">
-            <article>
-                <h3>Featured Chart</h3>
-                <p></p>
-                <a href="#"><img src="images/1.jpg" alt="image-placeholder" /></a>
-            </article>
-        </div>
     </div> -->
 
     <div id="secondary-content">
@@ -174,24 +290,9 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-<head>
-	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-style@0.5.0"></script>
-</head>
-<body>
-	<div>
-		<canvas id="radarchart.js" width="1600" height="900"></canvas>
-	</div>
-	<p>
-		<button id="randomizeData">Randomize Data</button>
-		<button id="addDataset">Add Dataset</button>
-		<button id="removeDataset">Remove Dataset</button>
-		<button id="addData">Add Data</button>
-		<button id="removeData">Remove Data</button>
-	</p>
-</body>
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://d3js.org/d3.v4.js"></script>
 </body>
 </html>
 
