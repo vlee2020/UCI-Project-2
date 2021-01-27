@@ -14,12 +14,8 @@
     <link href='http://fonts.googleapis.com/css?family=Crete+Round' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     
-    
     <!-- Load d3.js -->
     <script src="https://d3js.org/d3.v4.js"></script>
-
-    <!-- Textures js libary -->
-    <script src="path/to/textures.js"></script>
 
 </head>
 
@@ -46,13 +42,10 @@
               <a class="dropdown-item" href="chart1.html">Chart 1</a>
               <a class="dropdown-item" href="chart2.html">Chart 2</a>
               <a class="dropdown-item" href="chart3.html">Chart 3</a>
-              <!-- <div class="dropdown-divider"></div> -->
-              <!-- <a class="dropdown-item" href="aboutus.html">About Us</a> -->
             </div>
           </li>
           <li class="nav-item">
               <a class="nav-link" href="aboutus.html">About Us</a>
-            <!-- <a class="nav-link" href="aboutus.html" tabindex="-1" aria-disabled="true">About Us</a> -->
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
@@ -85,7 +78,7 @@
     <div class="col span-sm-1 resp-scroll">
     </div>
   </div>
-  
+
   <div class = row2 style="height: auto !important;">
       <br>
       <br>
@@ -114,7 +107,6 @@
     <div class="wrapper">
         <h3>Heard Enough?</h3>
         <p>Awesome, our presentation is concluded.</p>
-        <!-- <a href="#" class="button-2">Get Started</a> -->
     </div>
 </div>
 
@@ -129,8 +121,7 @@
                 <li><h5>Team</h5></li>
                 <li><a href="aboutus.html">About Us</a></li>
                 <li><a href="team.html">Meet the Team</a></li>
-                <!-- <li><a href="#">What We Do</a></li> -->
-                <!-- <li><a href="#">Careers</a></li>                   -->
+
             </ul>
             <ul>
                 <li><h5>Directory</h5></li>
@@ -186,7 +177,7 @@ var effectiveness = d3.map(data, function(d){return d.defense_type;}).keys()
   svg.append("g")
     .style("font-size", 10)
     .call(d3.axisTop(x).tickSize(0))
-    //.select(".domain").remove()
+
 
   // Build Y scales and axis:
   var y = d3.scaleBand()
@@ -196,7 +187,7 @@ var effectiveness = d3.map(data, function(d){return d.defense_type;}).keys()
   svg.append("g")
       .style("font-size", 13)
       .call(d3.axisLeft(y).tickSize(0))
-      //.select(".domain").remove()
+
 
   function getColor(effectiveness){
     if (effectiveness == 2) {
@@ -209,7 +200,7 @@ var effectiveness = d3.map(data, function(d){return d.defense_type;}).keys()
      return "black"}
   }
 
-  // create a tooltip
+  // Create a tooltip
   var tooltip = d3.select("#my_dataviz")
     .append("div")
 
@@ -222,7 +213,7 @@ var effectiveness = d3.map(data, function(d){return d.defense_type;}).keys()
     .style("padding", "5px")
   
     
-  // Three function that change the tooltip when user hover / move / leave a cell
+  // Three functions that change the tooltip when user hover / move / leave a cell
   var mouseover = function(d) {
     tooltip
       .style("opacity", 1)
@@ -254,7 +245,6 @@ var effectiveness = d3.map(data, function(d){return d.defense_type;}).keys()
     .append("rect")
       .attr("x", function(d) { return x(d.defense_type) })
       .attr("y", function(d) { return y(d.attack_type) })
-      //.attr("value",function(d) {return d.effectiveness }) 
       .attr("rx", 0)
       .attr("ry", 0)
       .attr("width", x.bandwidth() )
@@ -263,8 +253,6 @@ var effectiveness = d3.map(data, function(d){return d.defense_type;}).keys()
       .style("stroke-width", 4)
       .style("stroke", "none")
       .style("opacity", 0.8)
-      //.text("text", function(d) {return d.defense_type;}).keys()
-
      
     .on("mouseover", mouseover)
     .on("mousemove", mousemove)
@@ -300,18 +288,15 @@ svg.append("text")
     .attr("transform", "rotate(-90)")
     .text("____Attacker Type_______");
 
-
-// Handmade legend
+// Legend icons
 svg.append("circle").attr("cx",15).attr("cy",375).attr("r", 6).style("fill", "black").style("stroke", "black")
 svg.append("circle").attr("cx",130).attr("cy",375).attr("r", 6).style("fill", "darkgray").style("stroke", "darkgray")
 svg.append("circle").attr("cx",300).attr("cy",375).attr("r", 6).style("fill", "white").style("stroke", "darkgray")
 svg.append("circle").attr("cx",425).attr("cy",375).attr("r", 6).style("fill", "red").style("stroke", "red")
-// svg.append("rect").attr("x",0).attr("y",350).attr("width", 200).attr("height", 20).style("fill", "red")
-// svg.append("rect").attr("x",220).attr("y",395).attr("width", 200).attr("height", 20).style("fill", "white")
-// svg.append("rect").attr("x",445).attr("y",395).attr("width", 200).attr("height", 20).style("fill", "darkgray")
-// svg.append("rect").attr("x",665).attr("y",395).attr("width", 200).attr("height", 20).style("fill", "black")
+
+// Legend text
 svg.append("text").attr("x", 25).attr("y", 375).text("No effect (0%)").style("font-size", "12px").attr("alignment-baseline","middle")
-svg.append("text").attr("x", 140).attr("y", 375).text("Not very effective (0.5%)").style("font-size", "12px").attr("alignment-baseline","middle")
+svg.append("text").attr("x", 140).attr("y", 375).text("Not very effective (50%)").style("font-size", "12px").attr("alignment-baseline","middle")
 svg.append("text").attr("x", 310).attr("y", 375).text("Normal (100%)").style("font-size", "12px").attr("alignment-baseline","middle")
 svg.append("text").attr("x", 435).attr("y", 375).text("Very Effective (200%)").style("font-size", "12px").attr("alignment-baseline","middle")
 
