@@ -1,8 +1,8 @@
 // set the dimensions of the canvas
 
 var margin = {top: 20, right: 20, bottom: 70, left: 40},
-    width = 1500 - margin.left - margin.right,
-    height = 750 - margin.top - margin.bottom;
+    width = 1200 - margin.left - margin.right,
+    height = 330 - margin.top - margin.bottom;
 
 
 // set the ranges
@@ -19,11 +19,11 @@ var xAxis = d3.svg.axis()
 var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left")
-    .ticks(10);
+    .ticks(15);
 
 
 // add the SVG element
-var svg = d3.select("body").append("svg")
+var svg = d3.select("#plot").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
@@ -85,7 +85,13 @@ var svg = d3.select("body").append("svg")
       .attr("height", function(d) { return height - y(d.total_points); })
       .on('mouseover', tip.show)
       .on('mouseout', tip.hide)
-
+  var tip = d3.tip()
+    .attr('class', 'd3-tip')
+    .offset([-10, 0])
+    .html(function(d) {
+      return "<strong>Total Points:</strong> <span style='color:red'>" + d.total_points + "</span>";
+    })
+    svg.call(tip);  
 });
 
 function type(d) {
