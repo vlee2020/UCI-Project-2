@@ -12,11 +12,21 @@
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
     <link href='http://fonts.googleapis.com/css?family=Crete+Round' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-core.min.js"></script>
+    <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-radar.min.js"></script>
+    <style type="text/css">
+      html, body, #container {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="https://www.pokemon.com/us">The World of Pokémon!</a>
+        <a class="navbar-brand" href="index.html">The World of Pokémon!</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -70,6 +80,7 @@
             </nav>
         </div>
     </header> -->
+
     <div id="hero-image">
         <div class="wrapper">
             <h2><strong>Chart 2</h2>
@@ -77,144 +88,6 @@
                 <p>Explain Chart 2</p>
         </div>
     </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-
-    <div id="chart">
-    <canvas id="myChart" width="500" height="300"> </canvas>
-            <script type="text/javascript">
-            
-              // Defining datasets for display on radar plot
-               var Normal = [77,75,61,57,64,69];
-               var Fire = [69,68,85,71,86]
-               var Water = [70,73,75,71,75]
-               var Electric = [62,66,74,72,89]
-               var Fighting = [71,72,101,68,56]
-               var Ground = [71,85,94,64,55]
-               var Psychic = [72,71,75,88,99]
-               var Rock = [67,98,92,73,61]
-               var Dark = [69,65,81,67,71]
-               var Steel = [70,117,94,77,70]
-               var Grass = [67,72,75,70,75]
-               var Ice = [72,71,77,72,69]
-               var Poison = [74,76,76,72,67]
-               var Flying = [70,64,75,70,74]
-               var Bug = [57,72,71,65,56]
-               var Ghost = [64,80,74,79,82]
-               var Dragon = [82,85,107,85,92]
-               var Fairy = [69,68,85,71,86]
-              //  Defining Colorsets for display on radar plot
-              var ctx = document.getElementById("myChart");
-              var data = {
-                        labels: ["HP","Attack","Defense","Sp.Attack","Sp.Defense","Speed"],
-                        datasets: [
-                           { label: 'Normal',
-                           data: Normal,
-                           borderColor :['rgba(210, 180, 140, 1)'],
-                           hidden: true
-                     },
-                           { label: 'Fire',
-                           data: Fire,
-                           borderColor :['rgba(255, 0, 0, 1)']
-                     },
-                           { label: 'Water',
-                           data: Water,
-                           borderColor :['rgba(0, 0, 255, 1)']
-                     },
-                           { label: 'Electric',
-                           data: Electric,
-                           borderColor :['rgba(255, 255, 0, 1)'],
-                           hidden: true
-                     },
-                           { label: 'Fighting',
-                           data: Fighting,
-                           borderColor :['rgba(128, 0, 0, 1)'],
-                           hidden: true
-                     },
-                           { label: 'Ground',
-                           data: Ground,
-                           borderColor :['rgba(205, 133, 63, 1)'],
-                           hidden: true
-                     },
-                           { label: 'Psychic',
-                           data: Psychic,
-                           borderColor :['rgba(255, 0, 255, 1)'],
-                           hidden: true
-                     },
-                           { label: 'Rock',
-                           data: Rock,
-                           borderColor :['rgba(139, 69, 19, 1)'],
-                           hidden: true
-                     },
-                           { label: 'Dark',
-                           data: Dark,
-                           borderColor :['rgba(0, 0, 0, 1)'],
-                           hidden: true
-                     },
-                           { label: 'Steel',
-                           data: Steel,
-                           borderColor :['rgba(192, 192, 192, 1)'],
-                           hidden: true
-                     },
-                           { label: 'Grass',
-                           data: Grass,
-                           borderColor :['rgba(0, 128, 0, 1)']
-                     },
-                           { label: 'Ice',
-                           data: Ice,
-                           borderColor :['rgba(70, 130, 180, 1)'],
-                           hidden: true
-                     },
-                           { label: 'Poison',
-                           data: Poison,
-                           borderColor :['rgba(148, 0, 211, 1)'],
-                           hidden: true
-                     },
-                           { label: 'Flying',
-                           data: Flying,
-                           borderColor :['rgba(135, 206, 250, 1)'],
-                           hidden: true
-                     },
-                           { label: 'Bug',
-                           data: Bug,
-                           borderColor :['rgba(127, ,255, 0 , 1)'],
-                           hidden: true
-                     },   
-                           { label: 'Ghost',
-                           data: Ghost,
-                           borderColor :['rgba(75, 0, 130, 1)'],
-                           hidden: true
-                     },
-                           { label: 'Dragon',
-                           data: Dragon,
-                           borderColor :['rgba(139, 0, 139, 1)'],
-                           hidden: true
-                     },
-                           { label: 'Fairy',
-                           data: Fairy,
-                           borderColor :['rgba(255, 192, 203, 1)'],
-                           hidden: true
-                     }
-                  ]
-               }
-              var myChart = new Chart(ctx, {
-                type: 'radar',data,
-               options: {
-                  scales: {
-                     yAxes: [{
-                        ticks: {
-                           beginAtZero:true
-                        }
-                     }]
-                  }
-               }
-               
-            });
-            
-            </script>
-       
-    </div>
-    
 
     <!-- <div id="features">
         <div class="wrapper">
@@ -301,6 +174,24 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<head>
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+	<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-style@0.5.0"></script>
+</head>
+<body>
+	<div>
+		<canvas id="radarchart.js" width="1600" height="900"></canvas>
+	</div>
+	<p>
+		<button id="randomizeData">Randomize Data</button>
+		<button id="addDataset">Add Dataset</button>
+		<button id="removeDataset">Remove Dataset</button>
+		<button id="addData">Add Data</button>
+		<button id="removeData">Remove Data</button>
+	</p>
+</body>
+
 </body>
 </html>
 
