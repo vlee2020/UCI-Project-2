@@ -1,170 +1,142 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Go Pokémon Go!</title>
-    <!--[if lt IE 9]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/reset.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" type="text/css" href="../static/css/reset.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
-    <link href='http://fonts.googleapis.com/css?family=Crete+Round' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</select>
+<div id="chartContainer" style="height: 360px; width: 100%;"></div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+</script>
 </head>
-
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="https://www.pokemon.com/us">The World of Pokémon!</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-    
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="https://www.pokemon.com/us">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Charts
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="chart1.html">Chart 1</a>
-                <a class="dropdown-item" href="chart2.html">Chart 2</a>
-                <a class="dropdown-item" href="chart3.html">Chart 3</a>
-                <!-- <div class="dropdown-divider"></div> -->
-                <!-- <a class="dropdown-item" href="aboutus.html">About Us</a> -->
-              </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="aboutus.html">About Us</a>
-              <!-- <a class="nav-link" href="aboutus.html" tabindex="-1" aria-disabled="true">About Us</a> -->
-            </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-        </div>
-      </nav>
-    <!-- <header>
-        <div class="wrapper">
-            <h1>Pokémon<span class="color">.</span></h1>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="#">Charts  ￬</a></li>
-                        <ul class="hidden">
-                            <li><a href="#">Chart1</a></li>
-                            <li><a href="#">Chart2</a></li>
-                            <li><a href="#">Chart3</a></li>
-                        </ul>
-                    </li>
+<canvas id="myChart" width="500" height="300"></canvas>
+<script type="text/javascript">
 
-                </ul>
-            </nav>
-        </div>
-    </header> -->
+  // Defining datasets for display on radar plot
+   var Normal = [77,61,75,64,57];
+   var Fire = [69,68,85,71,86]
+   var Water = [70,73,75,71,75]
+   var Electric = [62,66,74,72,89]
+   var Fighting = [71,72,101,68,56]
+   var Ground = [71,85,94,64,55]
+   var Psychic = [72,71,75,88,99]
+   var Rock = [67,98,92,73,61]
+   var Dark = [69,65,81,67,71]
+   var Steel = [70,117,94,77,70]
+   var Grass = [67,72,75,70,75]
+   var Ice = [72,71,77,72,69]
+   var Poison = [74,76,76,72,67]
+   var Flying = [70,64,75,70,74]
+   var Bug = [57,72,71,65,56]
+   var Ghost = [64,80,74,79,82]
+   var Dragon = [82,85,107,85,92]
+   var Fairy = [69,68,85,71,86]
+  //  Defining Colorsets for display on radar plot
+  var ctx = document.getElementById("myChart");
+  var data = {
+            labels: ["HP","Attack","Defense","Sp.Attack","Sp.Defense","Speed"],
+            datasets: [
+               { label: 'Normal',
+               data: Normal,
+               borderColor :['rgba(210, 180, 140, 1)'],
+               hidden: true
+         },
+               { label: 'Fire',
+               data: Fire,
+               borderColor :['rgba(255, 0, 0, 1)']
+         },
+               { label: 'Water',
+               data: Water,
+               borderColor :['rgba(0, 0, 255, 1)']
+         },
+               { label: 'Electric',
+               data: Electric,
+               borderColor :['rgba(255, 255, 0, 1)'],
+               hidden: true
+         },
+               { label: 'Fighting',
+               data: Fighting,
+               borderColor :['rgba(128, 0, 0, 1)'],
+               hidden: true
+         },
+               { label: 'Ground',
+               data: Ground,
+               borderColor :['rgba(205, 133, 63, 1)'],
+               hidden: true
+         },
+               { label: 'Psychic',
+               data: Psychic,
+               borderColor :['rgba(255, 0, 255, 1)'],
+               hidden: true
+         },
+               { label: 'Rock',
+               data: Rock,
+               borderColor :['rgba(139, 69, 19, 1)'],
+               hidden: true
+         },
+               { label: 'Dark',
+               data: Dark,
+               borderColor :['rgba(0, 0, 0, 1)'],
+               hidden: true
+         },
+               { label: 'Steel',
+               data: Steel,
+               borderColor :['rgba(192, 192, 192, 1)'],
+               hidden: true
+         },
+               { label: 'Grass',
+               data: Grass,
+               borderColor :['rgba(0, 128, 0, 1)']
+         },
+               { label: 'Ice',
+               data: Ice,
+               borderColor :['rgba(70, 130, 180, 1)'],
+               hidden: true
+         },
+               { label: 'Poison',
+               data: Poison,
+               borderColor :['rgba(148, 0, 211, 1)'],
+               hidden: true
+         },
+               { label: 'Flying',
+               data: Flying,
+               borderColor :['rgba(135, 206, 250, 1)'],
+               hidden: true
+         },
+               { label: 'Bug',
+               data: Bug,
+               borderColor :['rgba(127, ,255, 0 , 1)'],
+               hidden: true
+         },   
+               { label: 'Ghost',
+               data: Ghost,
+               borderColor :['rgba(75, 0, 130, 1)'],
+               hidden: true
+         },
+               { label: 'Dragon',
+               data: Dragon,
+               borderColor :['rgba(139, 0, 139, 1)'],
+               hidden: true
+         },
+               { label: 'Fairy',
+               data: Fairy,
+               borderColor :['rgba(255, 192, 203, 1)'],
+               hidden: true
+         }
+      ]
+   }
+  var myChart = new Chart(ctx, {
+    type: 'radar',data,
+   options: {
+      scales: {
+         yAxes: [{
+            ticks: {
+               beginAtZero:true
+            }
+         }]
+      }
+   }
+   
+});
 
-    <div id="hero-image">
-        <div class="wrapper">
-            <h2><strong>Chart 2</h2>
-            <!-- <a href="#" class="button-1">Get Started</a> -->
-                <p>Explain Chart 2</p>
-        </div>
-    </div>
-
-    <!-- <div id="features">
-        <div class="wrapper">
-            <ul>
-                <li class="feature-1">
-                    <h4>Go Pokemon Go!</h4>
-                    <p>lorem ipsum</p>
-                </li>
-                <li class="feature-2">
-                    <h4>Characters</h4>
-                    <p>lorem ipsum</p>
-                </li> -->
-                <!-- <li class="feature-3">
-                    <h4>Territories</h4>
-                    <p>lorem ipsum</p>
-                </li>
-                <div class="clear"></div>
-            </ul>
-        </div>
-    </div> -->
-
-    <!-- <div id="primary-content">
-        <div class="wrapper">
-            <article>
-                <h3>Featured Chart</h3>
-                <p></p>
-                <a href="#"><img src="images/1.jpg" alt="image-placeholder" /></a>
-            </article>
-        </div>
-    </div> -->
-
-    <div id="secondary-content">
-        <div class="wrapper"></div>
-            <article style="background-image: url('../static/images/001_460x270_v3.png');">
-                <div class="overlay">
-                    <h4>Meet Bulbasaur</h4>
-                    <p>There is a plant seed on its back right from the day this Pokémon is born. The seed slowly grows.</p>
-                    <a href="bulbasaur.html" class="more-link">View more</a>
-                </div>
-            </article>
-            <article style="background-image: url('../static/images/25th-anniversary-main-169_460x270_v2.jpg');">
-                <div class="overlay">
-                    <h4>Pokémon GO!</h4>
-                    <p>Katy Perry Helps Celebrate the 25th Anniversary of Pokémon. A yearlong celebration begins.</p>
-                    <a href="pokemongo.html" class="more-link">Check It Out</a>
-                </div>
-            </article><div class="clear"></div>
-        </div>
-    </div>
-
-    <div id="cta">
-        <div class="wrapper">
-            <h3>Heard Enough?</h3>
-            <p>Awesome, our presentation is concluded.</p>
-            <!-- <a href="#" class="button-2">Get Started</a> -->
-        </div>
-    </div>
-
-    <footer>
-        <div class="wrapper"></div>
-            <div id="footer-info">
-                <p>Copyright 2021. Team Go Pokemon Go. All rights reserved.</p>
-                <p><a href="terms.html">Terms of Service</a>I <a href="privacy.html">Privacy</a></p>
-            </div>
-            <div id="footer-links">
-                <ul>
-                    <li><h5>Team</h5></li>
-                    <li><a href="aboutus.html">About Us</a></li>
-                    <li><a href="team.html">Meet the Team</a></li>
-                    <!-- <li><a href="#">What We Do</a></li> -->
-                    <!-- <li><a href="#">Careers</a></li>                   -->
-                </ul>
-                <ul>
-                    <li><h5>Directory</h5></li>
-                    <li><a href="https://www.pokemon.com/us/">Who</a></li>
-                    <li><a href="https://www.pokemon.com/us/">What</a></li>
-                    <li><a href="https://www.pokemon.com/us/">When</a></li>
-                    <li><a href="https://www.pokemon.com/us/">Where</a></li>  
-                </ul>
-            </div>
-            <div class="clear"></div>
-        </div>
-    </footer>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</script>
 </body>
 </html>
-
-    
