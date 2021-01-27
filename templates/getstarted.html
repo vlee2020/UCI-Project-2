@@ -6,15 +6,17 @@
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <link rel="stylesheet" type="text/css" href="css/reset.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/reset.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="../static/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">    
     <link href='http://fonts.googleapis.com/css?family=Crete+Round' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="index.html">The World of Pokémon!</a>
+        <a class="navbar-brand" href="https://www.pokemon.com/us">The World of Pokémon!</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -75,10 +77,10 @@
     <div id="hero-image">
         <div class="wrapper">
             <h3><strong>Did You Know?</h3>
-                <img width="500" height="282"src="images/Fighting-Pokemon-1.jpg" ALIGN="right" alt="Pokemon image"/>
+                <img style="border: 5px groove gold" width="500" height="282"src="../static/images/Fighting-Pokemon-1.jpg" ALIGN="right" alt="Pokemon image"/>
             <!-- <a href="getstarted.html" class="button-1">Get Started</a> -->
-                <p>Pokémon,also known as Pocket Monsters in Japan, is a Japanese media franchise managed by The Pokémon Company, a company founded by Nintendo, Game Freak, and Creatures. The franchise was created by Satoshi Tajiri in 1995,and is centered on fictional creatures called "Pokémon", which humans, known as Pokémon Trainers, catch and train to battle each other for sport. Works within the franchise are set in the Pokémon universe. The English slogan for the franchise is "Gotta Catch 'Em All".
-                    The franchise began as Pocket Monsters Red and Green (later released outside of Japan as Pokémon Red and Blue), a pair of video games for the original Game Boy handheld system that were developed by Game Freak and published by Nintendo in February 1996. Pokémon has since become one of the highest-grossing media franchises of all time.Pokémon is celebrating its 25th anniversary this year 2021.</p>
+                <p>Pokémon,also known as Pocket Monsters in Japan, is a Japanese media franchise managed by The Pokémon Company, a company founded by Nintendo, Game Freak, and Creatures. <p>The franchise was created by Satoshi Tajiri in 1995,and is centered on fictional creatures called "Pokémon", which humans, known as Pokémon Trainers, catch and train to battle each other for sport. Works within the franchise are set in the Pokémon universe.</p><p>The English slogan for the franchise is "Gotta Catch 'Em All".
+                The franchise began as Pocket Monsters Red and Green (later released outside of Japan as Pokémon Red and Blue), a pair of video games for the original Game Boy handheld system that were developed by Game Freak and published by Nintendo in February 1996.</p><p>Pokémon has since become one of the highest-grossing media franchises of all time.Pokémon is celebrating its 25th anniversary this year 2021.</p>
         </div>
     </div>
 
@@ -114,14 +116,14 @@
 
     <div id="secondary-content">
         <div class="wrapper"></div>
-            <article style="background-image: url('images/001_460x270_v3.png');">
+            <article style="background-image: url('../static/images/001_460x270_v3.png');">
                 <div class="overlay">
                     <h4>Meet Bulbasaur</h4>
                     <p>There is a plant seed on its back right from the day this Pokémon is born. The seed slowly grows.</p>
                     <a href="bulbasaur.html" class="more-link">View more</a>
                 </div>
             </article>
-            <article style="background-image: url('images/25th-anniversary-main-169_460x270_v2.jpg');">
+            <article style="background-image: url('../static/images/25th-anniversary-main-169_460x270_v2.jpg');">
                 <div class="overlay">
                     <h4>Pokémon GO!</h4>
                     <p>Katy Perry Helps Celebrate the 25th Anniversary of Pokémon. A yearlong celebration begins.</p>
