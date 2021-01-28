@@ -55,7 +55,7 @@ def chart2():
 def chart3():
     return render_template('chart3.html')
 
-@app.route("/getstarted")
+@app.route("/getstarted.html")
 def getstarted():
     return render_template('getstarted.html')
 
