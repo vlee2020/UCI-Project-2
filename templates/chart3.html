@@ -72,8 +72,13 @@
       <br>
       <br>
       <p>
+      <br>
         The full type chart here displays the strengths and weaknesses of each type. Look down the left hand side for the attacking type, then move across to see how effective it is against each Pokémon type.
-      </p>      
+      </p>   
+  
+      <p>
+        Each pokemon type may have several stengths and weaknesses in both attack and defense so in battles it is wise to use a pokemon that has a type advantage over your opponent!
+      </p>   
     </div>
     <div class="col span-sm-1 resp-scroll">
     </div>
@@ -164,7 +169,7 @@ console.log(data)
 // Labels of row and columns -> unique identifier of the column called 'group' and 'variable'
 var attackers = d3.map(data, function(d){return d.attack_type;}).keys()
 var defenders = d3.map(data, function(d){return d.defense_type;}).keys()
-var effectiveness = d3.map(data, function(d){return d.defense_type;}).keys()
+var effectiveness = d3.map(data, function(d){return d.effectiveness;}).keys()
 
 // console.log(attackers);
 // console.log(defenders);
@@ -224,7 +229,7 @@ var effectiveness = d3.map(data, function(d){return d.defense_type;}).keys()
 
   var mousemove = function(d) {
     tooltip
-      .html(d.attack_type + " does "+ d.effectiveness + "x damage <br> against " + d.defense_type)
+      .html(d.defense_type + " does "+ d.effectiveness + "x damage <br> against " + d.attack_type)
       .style("left", (d3.mouse(this)[0]) + "px")
       .style("top", (d3.mouse(this)[1]) + "px")
       .position(absolute)
@@ -240,11 +245,11 @@ var effectiveness = d3.map(data, function(d){return d.defense_type;}).keys()
 
   //add the squares
   svg.selectAll()
-    .data(data, function(d) {return d.attack_type+':'+d.defense_type;})
+    .data(data, function(d) {return d.defense_type+':'+d.attack_type;})
     .enter()
     .append("rect")
-      .attr("x", function(d) { return x(d.defense_type) })
-      .attr("y", function(d) { return y(d.attack_type) })
+      .attr("x", function(d) { return x(d.attack_type) })
+      .attr("y", function(d) { return y(d.defense_type) })
       .attr("rx", 0)
       .attr("ry", 0)
       .attr("width", x.bandwidth() )
@@ -286,7 +291,7 @@ svg.append("text")
     .attr("y", -65)
     .attr("dy", ".1em")
     .attr("transform", "rotate(-90)")
-    .text("____Attacker Type_______");
+    .text("______Attacker Type_______");
 
 // Legend icons
 svg.append("circle").attr("cx",15).attr("cy",375).attr("r", 6).style("fill", "black").style("stroke", "black")
@@ -298,7 +303,7 @@ svg.append("circle").attr("cx",425).attr("cy",375).attr("r", 6).style("fill", "r
 svg.append("text").attr("x", 25).attr("y", 375).text("No effect (0%)").style("font-size", "12px").attr("alignment-baseline","middle")
 svg.append("text").attr("x", 140).attr("y", 375).text("Not very effective (50%)").style("font-size", "12px").attr("alignment-baseline","middle")
 svg.append("text").attr("x", 310).attr("y", 375).text("Normal (100%)").style("font-size", "12px").attr("alignment-baseline","middle")
-svg.append("text").attr("x", 435).attr("y", 375).text("Very Effective (200%)").style("font-size", "12px").attr("alignment-baseline","middle")
+svg.append("text").attr("x", 435).attr("y", 375).text("Super Effective (200%)").style("font-size", "12px").attr("alignment-baseline","middle")
 
 </script>
 </body>
